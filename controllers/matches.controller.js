@@ -22,7 +22,7 @@ const getTodayMatches = async (req, res) => {
       .find({
         date: todayDateString,
       })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: todayMatches });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -37,7 +37,7 @@ const getTomorrowMatches = async (req, res) => {
     const tomorrowDateString = tomorrow.toISOString().split("T")[0];
     const tomorrowMatches = await matchModel
       .find({ date: tomorrowDateString })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: tomorrowMatches });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -48,7 +48,7 @@ const getAllMatches = async (req, res) => {
   try {
     const matches = await matchModel
       .find({})
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -90,7 +90,7 @@ const getYesterdaysMatches = async (req, res) => {
     const yesterdayDateString = yesterday.toISOString().split("T")[0];
     const yesterdayMatches = await matchModel
       .find({ date: yesterdayDateString })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: yesterdayMatches });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -102,7 +102,7 @@ const getMatchById = async (req, res) => {
     const { id } = req.params;
     const match = await matchModel
       .findById(id)
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ match });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -126,7 +126,7 @@ const getMatchByTeam = async (req, res) => {
     const { team } = req.params;
     const match = await matchModel
       .find({ team })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ match });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -138,7 +138,7 @@ const getMatchByChannel = async (req, res) => {
     const { channel } = req.params;
     const match = await matchModel
       .find({ channel })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ match });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -150,7 +150,7 @@ const getMatchByLeague = async (req, res) => {
     const { league } = req.params;
     const match = await matchModel
       .find({ league })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ match });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -162,7 +162,7 @@ const getMatchByTeamAndDate = async (req, res) => {
     const { team, date } = req.params;
     const match = await matchModel
       .find({ team, date })
-      .populate("homeTeam awayTeam channel");
+      .populate("homeTeam awayTeam channel league");
     res.status(200).json({ match });
   } catch (error) {
     res.status(500).json({ message: error.message });
