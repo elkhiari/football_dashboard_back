@@ -23,4 +23,4 @@ const ChannelSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Channel", ChannelSchema);
+module.exports = mongoose.model("channel", ChannelSchema);
