@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Name is required"],
       trim: true,
       unique: [true, "Username already exists"],
+      lowercase: true,
     },
     profilePicture: {
       type: String,
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema(
     },
     email: {
       type: String,
+      lowercase: true,
       required: [true, "Email is required"],
       unique: [true, "Email already exists"],
       trim: true,

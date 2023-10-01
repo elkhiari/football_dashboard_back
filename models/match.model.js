@@ -32,7 +32,7 @@ const matchSchema = new mongoose.Schema(
     },
     channel: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Channel',
+      ref: "Channel",
       required: [true, "Channel is required"],
       trim: true,
     },
