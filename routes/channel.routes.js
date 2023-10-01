@@ -7,7 +7,7 @@ const {
   deleteChannel,
 } = require("../controllers/channels.controller");
 
-channelRoute.route("/").get(auth, getAllChannels).post(auth, addChannel);
+channelRoute.route("/").get(getAllChannels).post(auth, addChannel);
 channelRoute.route("/:id").delete(auth, authAdmin, deleteChannel);
 
 module.exports = channelRoute;
