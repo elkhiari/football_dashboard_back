@@ -27,8 +27,19 @@ const addChannel = async (req, res) => {
   }
 };
 
+const updateChannel = async(req, res) => {
+  try {
+    const id = req.params.id
+    const newChannel = await ChannelModel.findByIdAndUpdate(id,req.body);
+    res.status(201).json({ message: "Channel updated successfully" });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+}
+
 module.exports = {
   getAllChannels,
   deleteChannel,
   addChannel,
+  updateChannel
 };
