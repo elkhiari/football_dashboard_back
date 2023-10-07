@@ -15,6 +15,7 @@ const {
   getMatchByLeague,
   getMatchByTeamAndDate,
   getAllData,
+  updateMatches,
 } = require("../controllers/matches.controller");
 
 matchRouter.route("/data").get(auth, getAllData);
@@ -26,7 +27,8 @@ matchRouter.route("/all").get(getAllMatches);
 matchRouter
   .route("/:id")
   .get(getMatchById)
-  .delete(auth, authAdmin, deleteMatch);
+  .delete(auth, authAdmin, deleteMatch)
+  .put(updateMatches);
 matchRouter.route("/date/:date").get(getMatchByDate);
 matchRouter.route("/team/:team").get(getMatchByTeam);
 matchRouter.route("/channel/:channel").get(getMatchByChannel);

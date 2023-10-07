@@ -169,6 +169,26 @@ const getMatchByTeamAndDate = async (req, res) => {
   }
 };
 
+const updateMatches = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { homeTeam, awayTeam, channel, date, time, league } = req.body;
+    const match = await matchModel.findByIdAndUpdate(id, {
+      homeTeam,
+      awayTeam,
+      channel,
+      date,
+      time,
+      league,
+    });
+    res.status(200).json({ message: "Matches updated successfully" });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getTodayMatches,
   getTomorrowMatches,
@@ -183,4 +203,5 @@ module.exports = {
   getMatchByLeague,
   getMatchByTeamAndDate,
   getAllData,
+  updateMatches,
 };
