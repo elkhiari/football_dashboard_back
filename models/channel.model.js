@@ -17,6 +17,11 @@ const ChannelSchema = new mongoose.Schema(
       required: [true, "Channel link is required"],
       minlength: [3, "Channel link must be at least 3 characters long"],
     },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: [true, "Category is required"]
+    },
   },
   {
     timestamps: true,

@@ -1,0 +1,26 @@
+POST https://onesignal.com/api/v1/notifications
+Content-Type: application/json
+Authorization: Basic OWFmZTc4MjItMDhlZC00ZGVkLTk2OTYtN2Y2YWYwMDdlODRi
+
+{
+  "app_id": "85680034-1987-4575-8f45-e2a6753f7e9e",
+  "included_segments": ["All"],
+  "contents": {"en": "English Message"} 
+}
+
+###
+
+PUT http://localhost:8080/api/v1/category/65b11ab55882605a83d63e3b
+Content-Type: application/json
+Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MThjMjY3Y2RkMmMwNWE0NzRiNmViZCIsImlhdCI6MTcwNjEwNDQ2Nn0.8w-C-eJRj3AFVeMAd6D-oqr472Kcc_OgJob-ti0VxCA
+
+{
+    "name": "Bien sport",
+    "description": "Bien sport",
+    "logo":"https://iconape.com/wp-content/files/dk/332067/png/bein-sport-1-logo.png"
+}
+
+
+###
+
+GEt http://localhost:8080/api/v1/channel

@@ -1,8 +1,9 @@
+const channelModel = require("../models/channel.model");
 const ChannelModel = require("../models/channel.model");
 
 const getAllChannels = async (req, res) => {
   try {
-    const channels = await ChannelModel.find({});
+    const channels = await ChannelModel.find({}).populate("category");
     res.status(200).json({ channels });
   } catch (error) {
     res.status(500).json(error.message);
