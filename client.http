@@ -23,4 +23,4 @@ Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1MThjMjY3Y2
 
 ###
 
-GEt http://localhost:8080/api/v1/channel
+GEt http://localhost:8080/api/v1/channel/65b11ab55882605a83d63e3b

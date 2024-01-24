@@ -6,12 +6,14 @@ const {
   addChannel,
   updateChannel,
   deleteChannel,
+  getAllChannelsByCategory
 } = require("../controllers/channels.controller");
 
 channelRoute.route("/").get(getAllChannels).post(auth, addChannel);
 channelRoute
   .route("/:id")
   .delete(auth, authAdmin, deleteChannel)
-  .put(auth, updateChannel);
+  .put(auth, updateChannel)
+  .get(getAllChannelsByCategory);
 
 module.exports = channelRoute;
