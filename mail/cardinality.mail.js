@@ -22,7 +22,7 @@ const sendCredentialsEmail = (user) => {
             <li><strong>Username:</strong> ${user.username}</li>
             <li><strong>Password:</strong> ${user.password}</li>
           </ul>
-        <a href="http://localhost:3000/login" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px;">Login</a>
+        <a href="https://footbb.vercel.app/#/login" style="display: inline-block; padding: 10px 20px; background-color: #333; color: #fff; text-decoration: none; border-radius: 5px;">Login</a>
           <p style="font-size: 16px;">Please log in and change your password immediately for security reasons.</p>
           <p style="font-size: 16px;">Thank you for choosing our service.</p>
         </div>
