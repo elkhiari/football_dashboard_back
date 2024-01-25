@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendCredentialsEmail = (user) => {
+const sendCredentialsEmail = async(user) => {
   const mailOptions = {
     from: process.env.EMAIL,
     to: user.email,
@@ -30,10 +30,8 @@ const sendCredentialsEmail = (user) => {
     `,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      throw error;
-    }
+  await transporter.sendMail(mailOptions).then((info) => {
+    console.log("Email sent: " + info.response);
   });
 };
 

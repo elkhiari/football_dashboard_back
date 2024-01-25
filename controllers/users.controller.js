@@ -38,7 +38,7 @@ const addUser = async (req, res) => {
       password: hash,
       role,
     });
-    sendCredentialsEmail({
+    await sendCredentialsEmail({
       username,
       email,
       password,
