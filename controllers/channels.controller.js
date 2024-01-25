@@ -40,7 +40,7 @@ const updateChannel = async(req, res) => {
 
 const getAllChannelsByCategory = async (req, res) => {
   try {
-    const channels = await ChannelModel.find({ category: req.params.id });
+    const channels = await ChannelModel.find({ category: req.params.id }).populate("category");
     res.status(200).json({ channels });
   } catch (error) {
     res.status(500).json(error.message);

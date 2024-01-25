@@ -6,5 +6,7 @@ AllRoutes.use("/teams", require("../routes/teams.routes"));
 AllRoutes.use("/channel", require("../routes/channel.routes"));
 AllRoutes.use("/matches", require("../routes/matches.routes"));
 AllRoutes.use("/category", require("../routes/category.routes"));
+AllRoutes.use("/notification", require("../routes/notification.routes"));
+AllRoutes.use("/movies", require("../routes/movie.routes"))
 
 module.exports = AllRoutes;

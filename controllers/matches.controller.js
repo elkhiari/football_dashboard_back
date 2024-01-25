@@ -21,6 +21,7 @@ const getTodayMatches = async (req, res) => {
     const todayMatches = await matchModel
       .find({
         date: todayDateString,
+        resume: req.query.resume == "true" ? { $nin: [null, ''] } : { $in: [null, '']},
       })
       .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: todayMatches });
@@ -36,7 +37,9 @@ const getTomorrowMatches = async (req, res) => {
     tomorrow.setDate(tomorrow.getDate() + 1);
     const tomorrowDateString = tomorrow.toISOString().split("T")[0];
     const tomorrowMatches = await matchModel
-      .find({ date: tomorrowDateString })
+      .find({ 
+        date: tomorrowDateString,
+      })
       .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: tomorrowMatches });
   } catch (error) {
@@ -47,7 +50,7 @@ const getTomorrowMatches = async (req, res) => {
 const getAllMatches = async (req, res) => {
   try {
     const matches = await matchModel
-      .find({})
+      .find({resume: req.query.resume === "true" ? { $nin: [null, ''] } : { $in: [null, '']}})
       .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches });
   } catch (error) {
@@ -89,7 +92,11 @@ const getYesterdaysMatches = async (req, res) => {
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayDateString = yesterday.toISOString().split("T")[0];
     const yesterdayMatches = await matchModel
-      .find({ date: yesterdayDateString })
+      .find({ 
+        date: yesterdayDateString,
+        resume: req.query.resume === "true" ? { $nin: [null, ''] } : { $in: [null, '']}
+      
+      })
       .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: yesterdayMatches });
   } catch (error) {
@@ -172,15 +179,7 @@ const getMatchByTeamAndDate = async (req, res) => {
 const updateMatches = async (req, res) => {
   try {
     const { id } = req.params;
-    const { homeTeam, awayTeam, channel, date, time, league } = req.body;
-    const match = await matchModel.findByIdAndUpdate(id, {
-      homeTeam,
-      awayTeam,
-      channel,
-      date,
-      time,
-      league,
-    });
+    const match = await matchModel.findByIdAndUpdate(id,req.body);
     res.status(200).json({ message: "Matches updated successfully" });
   } catch (error) {
     res.status(500).json({
