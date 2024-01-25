@@ -8,5 +8,6 @@ AllRoutes.use("/matches", require("../routes/matches.routes"));
 AllRoutes.use("/category", require("../routes/category.routes"));
 AllRoutes.use("/notification", require("../routes/notification.routes"));
 AllRoutes.use("/movies", require("../routes/movie.routes"))
+AllRoutes.use("/data", require("../routes/data.routes"))
 
 module.exports = AllRoutes;
