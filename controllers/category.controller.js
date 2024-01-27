@@ -24,7 +24,14 @@ const create = async (req, res) => {
 
 const findAll = async (req, res) => {
     try {
-        const data = await categoryModel.find();
+        const data = await categoryModel.aggregate([{
+            $lookup: {
+                from: 'channels',
+                localField: '_id',
+                foreignField: 'category',
+                as: 'channels',
+            },
+        }, ]);
         res.send(data);
     } catch (err) {
         res.status(500).send({
