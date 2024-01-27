@@ -6,7 +6,8 @@ const {
   addChannel,
   updateChannel,
   deleteChannel,
-  getAllChannelsByCategory
+  getAllChannelsByCategory,
+  
 } = require("../controllers/channels.controller");
 
 channelRoute.route("/").get(getAllChannels).post(auth, addChannel);

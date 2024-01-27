@@ -39,6 +39,16 @@ const findAll = async (req, res) => {
         });
     }
 }
+const finddd = async (req, res) => {
+    try {
+        const data = await categoryModel.find();
+        res.send(data);
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || 'Some error occurred while retrieving categories.',
+        });
+    }
+}
 
 const findOne = async (req, res) => {
     try {
@@ -120,5 +130,6 @@ module.exports = {
     findAll,
     findOne,
     update,
-    remove
+    remove,
+    finddd
 }

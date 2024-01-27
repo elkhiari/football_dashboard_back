@@ -6,10 +6,13 @@ const {
     findAll,
     findOne,
     update,
-    remove
+    remove,
+    finddd
 } = require('../controllers/category.controller');
 
-categoryRoutes.route('/').post(auth, authAdmin, create).get(findAll);
+categoryRoutes.route('/').post(auth, authAdmin, create).get(finddd);
+categoryRoutes.route('/chan/cate').get(findAll);
 categoryRoutes.route('/:id').get(findOne).put(auth, update).delete(auth, remove);
+
 
 module.exports = categoryRoutes;
