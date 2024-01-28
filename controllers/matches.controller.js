@@ -20,8 +20,7 @@ const getTodayMatches = async (req, res) => {
     const todayDateString = today.toISOString().split("T")[0];
     const todayMatches = await matchModel
       .find({
-        date: todayDateString,
-        resume: req.query.resume == "true" ? { $nin: [null, ''] } : { $in: [null, '']},
+        date: todayDateString
       })
       .populate("homeTeam awayTeam channel league");
     res.status(200).json({ matches: todayMatches });
